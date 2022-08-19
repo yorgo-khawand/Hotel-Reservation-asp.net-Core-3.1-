@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using RoyalTravel.Data.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark nav-btn" asp-area="Administration" asp-controller="Administration" asp-action="Index" title="Manage">
+                    <i class="fas fa-toolbox nav-icon"></i><span class="ml-1">Admin panel</span>
+                </a>
+            </li>
+        }
+        <li class="nav-item">
+            <a class="nav-link text-dark nav-btn" asp-area="" asp-controller="Rewards" asp-action="Index" title="Rewards">
+                <i class="fas fa-clipboard-list nav-icon"></i><span class="ml-1">My Reservations</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark nav-btn" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                <i class="fas fa-user nav-icon"></i><span class="ml-1">@UserManager.GetUserAsync(User).Result.FirstName's Account</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline nav-btn" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">
+                    <i class="fas fa-sign-out-alt" style="color:#d9534f;"></i><span class="ml-1">Logout</span>
+                </button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark nav-btn" asp-area="Identity" asp-page="/Account/Register">
+                <i class="fas fa-user-plus nav-icon"></i><span class="ml-1">Register</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark nav-btn" asp-area="Identity" asp-page="/Account/Login">
+                <i class="fas fa-sign-in-alt nav-icon"></i><span class="ml-1">Login</span>
+            </a>
+        </li>
+    }
+</ul>

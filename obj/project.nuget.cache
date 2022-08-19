@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "El0YT+TFXtkrdS4GS+vX+UOZ/kfrbH4Bywn5oAQAVuxudctxGIp0DOLtVh4dUg7hRbFndXvJZ1jBNmscnrjhaA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Yorgo\\Desktop\\Royal-Travel-master\\RoyalTravel\\RoyalTravel.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "The local source 'C:\\Users\\Yorgo\\Downloads\\packages' doesn't exist.",
+      "libraryId": "bootstrap.Less"
+    }
+  ]
+}
